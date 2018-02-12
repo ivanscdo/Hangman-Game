@@ -1,0 +1,46 @@
+pseudocode
+create README (markup)
+link to portfolio
+commit often!
+theme?? -history of web development? old browser graphics?
+
+theme
+trivia displayed after x time passed, or x guesses, perhaps mouse movement?
+first browser: WorldWideWeb, later renamed Nexus; developed on NeXT computer (created by Steve Jobs after dismissal from Apple), etc. 
+Find more bits of trivia!
+
+pseudocode
+html/css
+black screen (body)
+title: Hangman
+subtitle, with slanted styling?
+two center columns
+left column with picture
+right column:
+Press Any Key to get started!
+Wins
+Current Word along with spaces/underscores representing length of word
+Number of Guesses Remaining, along with actual #
+Letters Already Guessed, along with list of letters
+
+js
+page loads, game starts, user asked to press any key.
+
+.addEventListener for keyup, runs game function, all game logic within these initial curly braces; this cannot register as a guess!
+
+computer randomly chooses word from list of words, word length generated, guesses reset - 15?, letters already guessed reset - empty.
+
+list of words can be array or object?
+
+computer randomly chooses number (some sort of math function from 3.2??) which corresponds to word, then using .length for Current Word.
+
+if/else for guesses.
+
+randomly selected word pushed to "active array"? letters of word broken into indices? (PROBLEM! how to solve??)
+
+if guesses match: letter appears (display none? no, simply write to div).
+
+if guesses do no match: letter guessed appears in Letters Already Guessed, Number of Guesses decreases by 1.
+
+if all guesses match, Congratulations message is shown, user is asked if they want to play again. 
+
