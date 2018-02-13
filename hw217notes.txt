@@ -45,7 +45,7 @@ list of words can be array or object?
 
 computer randomly chooses number (some sort of math function from 3.2??) which corresponds to word, then using .length for Current Word.
 
-randomly selected word pushed to "active array"? letters of word broken into indices? (PROBLEM! how to solve??)
+randomly selected word pushed to "active array"? letters of word broken into indices? (PROBLEM!)
 
 
 problem: how do I take the word, count the number of letters, and create a gameboard based on that count??
@@ -61,3 +61,6 @@ var gameboardLength = computerChoice.length
 problem: how do I take that number and create a gameboard? ie create underscore for each letter?
 
 solution1: for loop!
+
+problem:how to handle guesses?
+solution1:take randomly chosen word, break up each letter and add to array, then use .indexof to check if guess match anything in array
