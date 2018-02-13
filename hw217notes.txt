@@ -30,13 +30,7 @@ page loads, game starts, user asked to press any key.
 
 computer randomly chooses word from list of words, word length generated, guesses reset - 15?, letters already guessed reset - empty.
 
-list of words can be array or object?
-
-computer randomly chooses number (some sort of math function from 3.2??) which corresponds to word, then using .length for Current Word.
-
 if/else for guesses.
-
-randomly selected word pushed to "active array"? letters of word broken into indices? (PROBLEM! how to solve??)
 
 if guesses match: letter appears (display none? no, simply write to div).
 
@@ -44,3 +38,26 @@ if guesses do no match: letter guessed appears in Letters Already Guessed, Numbe
 
 if all guesses match, Congratulations message is shown, user is asked if they want to play again. 
 
+
+randomly selected word:
+draft1
+list of words can be array or object?
+
+computer randomly chooses number (some sort of math function from 3.2??) which corresponds to word, then using .length for Current Word.
+
+randomly selected word pushed to "active array"? letters of word broken into indices? (PROBLEM! how to solve??)
+
+
+problem: how do I take the word, count the number of letters, and create a gameboard based on that count??
+
+solution1: take .length, insert 1 underscore for the length, change gameboard div 
+
+select random word from list
+var computerChoice = wordList[Math.floor(Math.random() * wordList.length)];
+
+length of randomly selected word (number) stored in variable
+var gameboardLength = computerChoice.length
+
+problem: how do I take that number and create a gameboard? ie create underscore for each letter?
+
+solution1: for loop!
