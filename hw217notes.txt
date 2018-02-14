@@ -2,12 +2,15 @@ pseudocode
 create README (markup)
 link to portfolio
 commit often!
-theme?? -history of web development? old browser graphics?
+theme??
+<86 IDEA1:history of web development? old browser graphics? /86>
+IDEA2:web browsers, words to guess will be old and new browsers, style will change to match style of browser, first(nexus & mosaic) to recent (chrome, safari, firefox etc)
 
-theme
-trivia displayed after x time passed, or x guesses, perhaps mouse movement?
+<86 trivia 
+displayed after x time passed, or x guesses, perhaps mouse movement?
 first browser: WorldWideWeb, later renamed Nexus; developed on NeXT computer (created by Steve Jobs after dismissal from Apple), etc. 
-Find more bits of trivia!
+Find more bits of trivia! /86>
+
 
 pseudocode
 html/css
@@ -39,6 +42,7 @@ if guesses do no match: letter guessed appears in Letters Already Guessed, Numbe
 if all guesses match, Congratulations message is shown, user is asked if they want to play again. 
 
 
+
 randomly selected word:
 draft1
 list of words can be array or object?
@@ -48,9 +52,13 @@ computer randomly chooses number (some sort of math function from 3.2??) which c
 randomly selected word pushed to "active array"? letters of word broken into indices? (PROBLEM!)
 
 
+
 problem: how do I take the word, count the number of letters, and create a gameboard based on that count??
 
 solution1: take .length, insert 1 underscore for the length, change gameboard div 
+
+
+
 
 select random word from list
 var computerChoice = wordList[Math.floor(Math.random() * wordList.length)];
@@ -58,9 +66,27 @@ var computerChoice = wordList[Math.floor(Math.random() * wordList.length)];
 length of randomly selected word (number) stored in variable
 var gameboardLength = computerChoice.length
 
+
+
+
 problem: how do I take that number and create a gameboard? ie create underscore for each letter?
 
 solution1: for loop!
 
+
 problem:how to handle guesses?
+
 solution1:take randomly chosen word, break up each letter and add to array, then use .indexof to check if guess match anything in array
+
+
+problem: how do I code different actions for multiple/concurrent key presses? ie first keypress starts game, second keypress counts as letter guess, etc
+
+I need a way to differentiate between key presses!
+
+solution1: wrapping with if/else? perhaps with a counter? failed
+
+solution2: for loop? started but revisited if/else, this time using if/else inside of document.addEventListener - successful, but doesn't make sense to implement, seems like it would be way to lengthy, would need one if/else argument for EACH user key press, no way of knowing how many key presses the user will make... wait, user will make at least 16 key presses (1 to start + 15 guesses)
+
+solution3: functions
+
+solution4: timestamp? 
