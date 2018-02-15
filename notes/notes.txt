@@ -59,24 +59,16 @@ solution1: take .length, insert 1 underscore for the length, change gameboard di
 
 
 
-
 select random word from list
 var computerChoice = wordList[Math.floor(Math.random() * wordList.length)];
 
 length of randomly selected word (number) stored in variable
 var gameboardLength = computerChoice.length
 
-
-
-
 problem: how do I take that number and create a gameboard? ie create underscore for each letter?
 
 solution1: for loop!
 
-
-problem:how to handle guesses?
-
-solution1:take randomly chosen word, break up each letter and add to array, then use .indexof to check if guess match anything in array
 
 
 problem: how do I code different actions for multiple/concurrent key presses? ie first keypress starts game, second keypress counts as letter guess, etc
@@ -90,3 +82,24 @@ solution2: for loop? started but revisited if/else, this time using if/else insi
 solution3: functions
 
 solution4: timestamp? 
+
+solution5: use start button
+
+
+
+problem:how to handle guesses?
+
+solution1:take randomly chosen word, break up each letter and add to array, then use .indexof to check if guess match anything in array
+
+problem: how do I handle keypresses that match? how do I take a keypress that matched a letter in the randomly chosen word and add that to the Current Word div; on top of that, how do I add that letter to the right position in that set of underscores? ie keypress matched letter that corresponds to third underscore, how I replace that third underscore with the letter that was pressed?
+
+solution1: take userGuess (key user pressed), look inside of computerChoice (computer's randomly chosen word), get index of that letter, then store value (int) in var.
+var gameboardIndex = computerChoice.indexOf(userGuess);
+
+problem: now I have the index, how do I change the correct underscore in the Current Word div?  I need to go into .gameboard with my index, and change the matching index in .gameboard div
+
+solution1: couldn't I just recreate the entire div after each correct keypress? success!
+
+problem: able to match keypress to change right underscore in Current Word div, however, it is recreating the div after each keypress, ie it deletes any previous keypresses and recreates with the current keypress. How do I get the previous keypresses to stick?
+
+solution1:
