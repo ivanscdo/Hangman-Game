@@ -46,12 +46,11 @@ document.querySelector(".start-button").addEventListener("click", function(){
             // if2 checks if there are any repeating characters in letter, starts search at fromIndex, which is the next index over from the first matching guess; stores value in gameboardFromIndex (int)
             if (computerChoice.split("").indexOf(userGuess, fromIndex) !== -1 ) {
                 var gameboardFromIndex = computerChoice.indexOf(userGuess, fromIndex);
-            console.log("gameboardIndex: ", gameboardIndex)
-            console.log("gameboardFromIndex: ", gameboardFromIndex)
+                console.log("gameboardIndex: ", gameboardIndex)
+                console.log("gameboardFromIndex: ", gameboardFromIndex)
             }
 
-            // for loop creates gameboard
-            // adding functionality to add userGuess to gameboard
+            // for loop creates gameboard with userGuess
             gameboard = "";
             for (i = 0; i < gameboardLength; i++){
                 if (i === gameboardIndex) {
@@ -59,8 +58,8 @@ document.querySelector(".start-button").addEventListener("click", function(){
                 } else {
                     // adds underscores to var gameboard based on word length
                     gameboard += "_ ";
-                    // takes var gameboard and inserts to div p.gameboard
                 }
+                // takes var gameboard and inserts to div p.gameboard
                 document.querySelector(".gameboard").innerHTML = gameboard;
             }
 
