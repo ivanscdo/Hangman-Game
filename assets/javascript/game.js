@@ -62,6 +62,10 @@ document.querySelector(".start-button").addEventListener("click", function(){
             var fromIndex = gameboardIndex + 1;
 
             // takes index of correct guess and stores into array, used for reference in gameboard rebuild
+            for (i = 0; i < gameboardIndexList.length; i++) {
+
+
+            }
             gameboardIndexList.push(gameboardIndex);
             console.log("gameboardIndexList: ", gameboardIndexList);
             
@@ -72,14 +76,27 @@ document.querySelector(".start-button").addEventListener("click", function(){
                 console.log("gameboardFromIndex: ", gameboardFromIndex)
             }
 
+            var blanks = ["_", "_", "_", "_", "_"];
 
-            if (counter === 0) {
-                gameboard = "";
+            function keyHandler(){
+                var word = "blank";
+                var userGuess = "a";
+                for( var i = 0; i < word.length; i++ ){
+                    if( word[i] === userGuess ){
+                        blanks[i] = userGuess;
+                    }
+                }
             }
-            
+
+
+            // if (counter === 0) {
+            //     gameboard = "";
+            // }
+            gameboard = "";
             // for loop - gameboard rebuild
             // adds functionality to add userGuess to gameboard
             for (i = 0; i < gameboardLength; i++){
+                
                 if (i === gameboardIndex) {
                     gameboard += userGuess + " ";
                 } else {
