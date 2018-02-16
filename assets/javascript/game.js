@@ -4,6 +4,21 @@ window.onload=function () {
 
 // starts game
 document.querySelector(".start-button").addEventListener("click", function(){
+    
+    // variables
+
+    // counter for gameboard builds
+    var counter = 0;
+
+    var guessesRemaining = "15";
+    document.querySelector(".guesses-remaining").innerHTML = guessesRemaining;
+
+    var lettersGuessed = "";
+    document.querySelector(".letters-guessed").innerHTML = lettersGuessed;
+
+    //stores list of correct guesses
+    var gameboardIndexList = [];
+    
 
     // start message
     document.querySelector(".start-msg").innerHTML = "Let's begin! Press any key to guess"
@@ -29,21 +44,32 @@ document.querySelector(".start-button").addEventListener("click", function(){
         document.querySelector(".gameboard").innerHTML = gameboard;
     }
     console.log("gameboard: ", gameboard);
-    
+
     // listens for key presses
     document.addEventListener("keyup", function( event ) {
+
         // key presses stored into var userGuess
         var userGuess = event.key;  
 
         //.split - splits randomly chosen word (computerChoice) into letters, then inserts into array 
-        //.indexOf -  checks if keypresses (userGuess) match letter in computerChoice word
+        //.indexOf -  checks if keypresses (userGuess) match letter in array
         if (computerChoice.split("").indexOf(userGuess) !== -1 ) {
+            
             // if userGuess matches a letter in computerChoice, find the index of that letter in computerChoice and store into gameboardIndex(int)
             var gameboardIndex = computerChoice.indexOf(userGuess);
+
             // fromIndex used as starting point for nested if, if2
             var fromIndex = gameboardIndex + 1;
+
+            // takes index of correct guess and stores into array, used for reference in gameboard rebuild
+            for (i = 0; i < gameboardIndexList.length; i++) {
+
+
+            }
+            gameboardIndexList.push(gameboardIndex);
+            console.log("gameboardIndexList: ", gameboardIndexList);
             
-            // if2 checks if there are any repeating characters in letter, starts search at fromIndex, which is the next index over from the first matching guess; stores value in gameboardFromIndex (int)
+            // if2 checks if there are any repeating characters in letter, starts search at fromIndex, the next index over from the first matching guess; stores value in gameboardFromIndex (int)
             if (computerChoice.split("").indexOf(userGuess, fromIndex) !== -1 ) {
                 var gameboardFromIndex = computerChoice.indexOf(userGuess, fromIndex);
                 console.log("gameboardIndex: ", gameboardIndex)
@@ -52,7 +78,10 @@ document.querySelector(".start-button").addEventListener("click", function(){
 
             // for loop creates gameboard with userGuess
             gameboard = "";
+            // for loop - gameboard rebuild
+            // adds functionality to add userGuess to gameboard
             for (i = 0; i < gameboardLength; i++){
+                
                 if (i === gameboardIndex) {
                     gameboard += userGuess + " ";
                 } else {
@@ -62,10 +91,19 @@ document.querySelector(".start-button").addEventListener("click", function(){
                 // takes var gameboard and inserts to div p.gameboard
                 document.querySelector(".gameboard").innerHTML = gameboard;
             }
+            // takes rebuilt gameboard and stores into p.gameboard div
+            document.querySelector(".gameboard").innerHTML = gameboard;
+            console.log(gameboard);
 
 
 
-
+        } else {
+            
+            lettersGuessed += userGuess;
+            document.querySelector(".letters-guessed").innerHTML = userGuess;
+            
+            guessesRemaining -= 1;
+            document.querySelector(".guesses-remaining").innerHTML = guessesRemaining;
         }
 
 

@@ -106,7 +106,7 @@ solution: document.querySelector(".gameboard").innerHTML = gameboard was inside 
 
 problem8: able to match keypress to change right underscore in Current Word div, however, it is recreating the div after each keypress, ie it deletes any previous keypresses and recreates with the current keypress. How do I get the previous keypresses to stick?
 
-solution1:
+solution1: store gameboardIndex into array, then when rebuilding gameboard, use index in that array
 
 problem9: if word has the same letter repeating elsewhere in the string - eg javascript has "a" at index 1 and 3 - computerChoice.indexOf(userGuess); is only recognizing the first instance, it stops searching once it reaches the first find. how do I get it to contiue its search?
 
