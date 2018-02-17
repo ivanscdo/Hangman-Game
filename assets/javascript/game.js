@@ -129,11 +129,14 @@ document.querySelector(".start-button").addEventListener("click", function(){
             function gameboardBuilder () {
                 for (var i = 0; i < gameboardLength; i++){
                     if (computerChoice[i] === userGuess) {
+                        var checker = userGuess;
                         gameboard[i] = userGuess;
                         console.log("---infunc/inif---");
-                        console.log("computerChoice:", computerChoice[i]);
-                        console.log("gameboard:", gameboard[i]);
                         console.log("userGuess:", userGuess);
+                        console.log("computerChoice[i]:", computerChoice[i]);
+                        console.log("gameboard[i]:", gameboard[i]);
+                        console.log("checker:", checker);
+                       
                     } 
                     
                 }
