@@ -1,5 +1,5 @@
 body {
-    background-color: #c0c0c0;
+    background-color: #ffffff;
 }
 
 h1, 
@@ -7,3 +7,14 @@ h2 {
     font-family: serif;
 }
 
+
+.title {
+    font-family: sans-serif;
+
+}
+
+.form-control {
+    width: 200%;
+    height: auto;
+    margin-left: 170px;
+}

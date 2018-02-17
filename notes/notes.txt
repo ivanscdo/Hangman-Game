@@ -133,9 +133,11 @@ problem 12: need to fix letters guessed. it is only recording the current guess,
 
 problem 12.1: there is no spacing in p.letters-guessed.
 
-    solution 1: instead of string, perhaps array? solved, but need spacing in between comma and letter. solved with: " " + userGuess. 
+    solution 1: instead of string, perhaps array? solved, but need spacing in between comma and letter. solved with: " " + userGuess. -solved!
 
 problem 12.1.1: letters guess is repeating the letter, should only be one instance. 
+
+    solution 1: pushed userGuess to array, used function-for loop to check if userGuess was already in array, if it wasn't then it was added to new array, new array then pushed to p.letters-guessed. -solved!
 
 
 
@@ -153,4 +155,4 @@ problem 15: need some sort of congratulatory message upon guessing word; tied to
 
 problem 16: need to fix guesses remaining, should not countdown if letter has already been guessed; tied to problem 12. 
 
-    solution 1: store letters already guessed in array
+    solution 1: store letters already guessed in array, check if they are already in array, if so don't countdown, if not, then countdown. already have array from p12.1.1-s1. if user guess is already in uniqueGuesses, then don't count down. 

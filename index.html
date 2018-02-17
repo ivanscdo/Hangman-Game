@@ -14,24 +14,39 @@
     </head>
     <body>
         <header class="container">
-            <h1 class="row justify-content-center">HANGMAN&trade;</h1>
-            <h2 class="row justify-content-center">Version 1.1N</h2>
+            <h1 class="row justify-content-center">
+                <div class="col-1 title chrome-b">H</div>
+                <div class="col-1 title chrome-r">A</div>
+                <div class="col-1 title chrome-y">N</div>
+                <div class="col-1 title chrome-b2">G</div>
+                <div class="col-1 title chrome-g">M</div>
+                <div class="col-1 title chrome-r3">A</div>
+                <div class="col-1 title chrome-g2">N</div>
+            </h1>
+            <h2 class="row justify-content-center"></h2>
         </header>
 
-        <main class="container">
+        <main class="container ">
+            <div class="row justify-content-left">
+                    <form>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1"><span class="glyphicon glyphicon-search"></span></label>
+                              <input class="form-control" id="exampleInputPassword1" placeholder="">
+                            </div>
+                          </form>
+            </div>
             <div class="row">
                 <div class="col"></div>
-                <div class="col-6">
+                <div class="col-4">
                     <div class="row justify-content-center">
-                        <button class="start-button">Click to start!</button>
+                        <button class="start-button">Let's Play!</button>
                     </div>
                     <div class="row">
-                        <div class="col"> image </div>
-                        <div class="col">
+                        <div class="col ">
                             <p class="start-msg">
                             </p>
                             <p>Wins:</p>
-                            <p></p>
+                            <p class="game-winner"></p>
                             <p>Current Word:</p>
                             <p class="gameboard"></p>
                             <p>Number of Guesses Remaining:</p>
@@ -44,9 +59,6 @@
                 </div>
                 <div class="col"></div>
             </div>
-
-
-
         </main>
         
     </body>
