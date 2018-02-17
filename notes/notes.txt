@@ -1,4 +1,5 @@
-pseudocode
+to do list:
+    pseudocode
 create README (markup)
 link to portfolio
 commit often!
@@ -13,51 +14,47 @@ Find more bits of trivia! /86>
 
 
 pseudocode
-html/css
-black screen (body)
-title: Hangman
-subtitle, with slanted styling?
-two center columns
-left column with picture
-right column:
-Press Any Key to get started!
-Wins
-Current Word along with spaces/underscores representing length of word
-Number of Guesses Remaining, along with actual #
-Letters Already Guessed, along with list of letters
+    html/css
+        black screen (body)
+        title: Hangman
+        subtitle, with slanted styling?
+        two center columns
+        left column with picture
+        right column:
+        Press Any Key to get started!
+        Wins
+        Current Word along with spaces/underscores representing length of word
+        Number of Guesses Remaining, along with actual #
+        Letters Already Guessed, along with list of letters
 
-js
-page loads, game starts, user asked to press any key.
+    js
+        page loads, game starts, user asked to press any key.
 
-.addEventListener for keyup, runs game function, all game logic within these initial curly braces; this cannot register as a guess!
+        .addEventListener for keyup, runs game function, all game logic within these initial curly braces; this cannot register as a guess!
 
-computer randomly chooses word from list of words, word length generated, guesses reset - 15?, letters already guessed reset - empty.
+        computer randomly chooses word from list of words, word length generated, guesses reset - 15?, letters already guessed reset - empty.
 
-if/else for guesses.
+        if/else for guesses.
 
-if guesses match: letter appears (display none? no, simply write to div).
+        if guesses match: letter appears (display none? no, simply write to div).
 
-if guesses do no match: letter guessed appears in Letters Already Guessed, Number of Guesses decreases by 1.
+        if guesses do no match: letter guessed appears in Letters Already Guessed, Number of Guesses decreases by 1.
 
-if all guesses match, Congratulations message is shown, user is asked if they want to play again. 
+        if all guesses match, Congratulations message is shown, user is asked if they want to play again. 
 
 
 
 randomly selected word:
 draft1
-list of words can be array or object?
+list of words can be string, array or object?
 
 computer randomly chooses number (some sort of math function from 3.2??) which corresponds to word, then using .length for Current Word.
 
 randomly selected word pushed to "active array"? letters of word broken into indices? (PROBLEM!)
 
+problem 1: how do I take the word, count the number of letters, and create a gameboard based on that count??
 
-
-problem1: how do I take the word, count the number of letters, and create a gameboard based on that count??
-
-solution1: take .length, insert 1 underscore for the length, change gameboard div 
-
-
+    solution1: take .length, insert 1 underscore for the length, change gameboard div 
 
 select random word from list
 var computerChoice = wordList[Math.floor(Math.random() * wordList.length)];
@@ -65,68 +62,68 @@ var computerChoice = wordList[Math.floor(Math.random() * wordList.length)];
 length of randomly selected word (number) stored in variable
 var gameboardLength = computerChoice.length
 
-problem2: how do I take that number and create a gameboard? ie create underscore for each letter?
+problem 2: how do I take that number and create a gameboard? ie create underscore for each letter?
 
-solution1: for loop!
+    solution 1: for loop!
 
-
-
-problem3: how do I code different actions for multiple/concurrent key presses? ie first keypress starts game, second keypress counts as letter guess, etc
+problem 3: how do I code different actions for multiple/concurrent key presses? ie first keypress starts game, second keypress counts as letter guess, etc
 
 I need a way to differentiate between key presses!
 
-solution1: wrapping with if/else? perhaps with a counter? failed
+    solution1: wrapping with if/else? perhaps with a counter? failed
 
-solution2: for loop? started but revisited if/else, this time using if/else inside of document.addEventListener - successful, but doesn't make sense to implement, seems like it would be way to lengthy, would need one if/else argument for EACH user key press, no way of knowing how many key presses the user will make... wait, user will make at least 16 key presses (1 to start + 15 guesses)
+    solution 2: for loop? started but revisited if/else, this time using if/else inside of document.addEventListener - successful, but doesn't make sense to implement, seems like it would be way to lengthy, would need one if/else argument for EACH user key press, no way of knowing how many key presses the user will make... wait, user will make at least 16 key presses (1 to start + 15 guesses)
 
-solution3: functions
+    solution 3: functions
 
-solution4: timestamp? 
+    solution 4: timestamp? 
 
-solution5: use start button
+    solution 5: use start button
 
+problem 4:how to handle guesses?
 
+    solution1:take randomly chosen word, break up each letter and add to array, then use .indexof to check if guess match anything in array
 
-problem4:how to handle guesses?
+problem 5: how do I handle keypresses that match? how do I take a keypress that matched a letter in the randomly chosen word and add that to the Current Word div; on top of that, how do I add that letter to the right position in that set of underscores? ie keypress matched letter that corresponds to third underscore, how I replace that third underscore with the letter that was pressed?
 
-solution1:take randomly chosen word, break up each letter and add to array, then use .indexof to check if guess match anything in array
-
-problem5: how do I handle keypresses that match? how do I take a keypress that matched a letter in the randomly chosen word and add that to the Current Word div; on top of that, how do I add that letter to the right position in that set of underscores? ie keypress matched letter that corresponds to third underscore, how I replace that third underscore with the letter that was pressed?
-
-solution1: take userGuess (key user pressed), look inside of computerChoice (computer's randomly chosen word), get index of that letter, then store value (int) in var.
+    solution 1: take userGuess (key user pressed), look inside of computerChoice (computer's randomly chosen word), get index of that letter, then store value (int) in var.
 var gameboardIndex = computerChoice.indexOf(userGuess);
 
-problem6: now I have the index, how do I change the correct underscore in the Current Word div?  I need to go into .gameboard with my index, and change the matching index in .gameboard div
+problem 6: now I have the index, how do I change the correct underscore in the Current Word div?  I need to go into .gameboard with my index, and change the matching index in .gameboard div
 
-solution1: couldn't I just recreate the entire div after each correct keypress? success!
+    solution 1: couldn't I just recreate the entire div after each correct keypress? success!
 
-problem7: gameboard recreate after matching keypress (correct guess), wasn't registering the last character. js was recognizing the last matching keypress, but it wasn't adding it to the Current Word div.
+problem 7: gameboard recreate after matching keypress (correct guess), wasn't registering the last character. js was recognizing the last matching keypress, but it wasn't adding it to the Current Word div.
 
-solution: document.querySelector(".gameboard").innerHTML = gameboard was inside the else argument, meaning that the correct guess was going through the if argument and it was adding it to the gameboard, but since it was never entering the else argument, it was never being written to the div element. moved document... outside of else, inside of for loop. 
+    solution 1: document.querySelector(".gameboard").innerHTML = gameboard was inside the else argument, meaning that the correct guess was going through the if argument and it was adding it to the gameboard, but since it was never entering the else argument, it was never being written to the div element. moved document... outside of else, inside of for loop. 
 
-problem8: able to match keypress to change right underscore in Current Word div, however, it is recreating the div after each keypress, ie it deletes any previous keypresses and recreates with the current keypress. How do I get the previous keypresses to stick?
+problem 8: able to match keypress to change right underscore in Current Word div, however, it is recreating the div after each keypress, ie it deletes any previous keypresses and recreates with the current keypress. How do I get the previous keypresses to stick?
 
-solution1: store gameboardIndex into array, then when rebuilding gameboard, use index in that array. in progress....
+    solution 1: store gameboardIndex into array, then when rebuilding gameboard, use index in that array. in progress....
 
-solution2: modify for loop that rebuilds gameboard with userGuess - trying with "gameboard[i] = userGuess;"
+    solution 2: modify for loop that rebuilds gameboard with userGuess - trying with "gameboard[i] = userGuess;"
 
 problem 8.1 : when console.log(gameboard[i], computerChoice[i] and userGuess), all three should be identical, but gameboard[i] is still showing underscore instead of userGuess. how to make it show userGuess??
 
-solution1:
+    solution 1: figured out I was declaring gameboard as a string, and strings are immutable, ie not mutable, ie not writable nor configurable (cannot change them), and because I was using the bracket character access method, ie gameboard[i], it was not working. switched gameboard to array, then used .push() to build empty (underscores)  gameboard, then .join() to eliminate the commas in between. -solved!
 
 
+problem 9: if word has the same letter repeating elsewhere in the string - eg javascript has "a" at index 1 and 3 - computerChoice.indexOf(userGuess); is only recognizing the first instance, it stops searching once it reaches the first find. how do I get it to continue its search?
+
+    solution: if/else (?) using the options of indexOf (?) so that its search starts at or after the first found character. found it! "str.indexOf(searchValue[, fromIndex])" need to use fromIndex option!
+
+problem 10: how to incorporate fromIndex? where do I add it?
+
+    solution: at if (computerChoice.split("").indexOf(userGuess) !== -1 )... if it matches? is that the only match? fromIndex = gameboardIndex, then begin search from there. -success!
+
+problem 11: how do I take var gameboardFromIndex and incorporate into 2nd for loop, which rebuilds gameboard with correct guesses? same or similar issue as problem8.
+
+    solution: see problem 8.1 -solved!
+
+problem 12: need to fix letters guessed. it is only recording the current guess, not any previous guesses. 
+
+problem 13: need to fix wins. currently not logging wins
+
+problem 14: need to fix theme. currently static, need to get it to change based on computerChoice. Hangman title should change to match browser color scheme (also need to change wordList to browsers) ie yellow/red/blue/green if computerChoice chrome
 
 
-
-
-problem9: if word has the same letter repeating elsewhere in the string - eg javascript has "a" at index 1 and 3 - computerChoice.indexOf(userGuess); is only recognizing the first instance, it stops searching once it reaches the first find. how do I get it to contiue its search?
-
-solution: if/else (?) using the options of indexOf (?) so that its search starts at or after the first found character. found it! "str.indexOf(searchValue[, fromIndex])" need to use fromIndex option!
-
-problem10: how to incorporate fromIndex? where do I add it?
-
-solution: at if (computerChoice.split("").indexOf(userGuess) !== -1 )... if it matches? is that the only match? fromIndex = gameboardIndex, then begin search from there. -success!
-
-problem11: how do I take var gameboardFromIndex and incorporate into 2nd for loop, which rebuilds gameboard with correct guesses? same or similar issue as problem8.
-
-solution: see problem8.1
