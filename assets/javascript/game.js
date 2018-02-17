@@ -12,7 +12,7 @@ document.querySelector(".start-button").addEventListener("click", function(){
     document.querySelector(".guesses-remaining").innerHTML = guessesRemaining;
 
     // letters guessed div
-    var lettersGuessed = "";
+    var lettersGuessed = [];
     document.querySelector(".letters-guessed").innerHTML = lettersGuessed;
 
     // list of words for computer to pick
@@ -88,8 +88,8 @@ document.querySelector(".start-button").addEventListener("click", function(){
         // end of: if (computerChoice.split("").indexOf(userGuess) !== -1 ) {
         } else {
             
-            lettersGuessed += userGuess;
-            document.querySelector(".letters-guessed").innerHTML = userGuess;
+            lettersGuessed.push(" " + userGuess);
+            document.querySelector(".letters-guessed").innerHTML = lettersGuessed;
             
             guessesRemaining -= 1;
             document.querySelector(".guesses-remaining").innerHTML = guessesRemaining;

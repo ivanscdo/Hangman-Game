@@ -120,10 +120,37 @@ problem 11: how do I take var gameboardFromIndex and incorporate into 2nd for lo
 
     solution: see problem 8.1 -solved!
 
+
+
+    ON DECK!
+
+
+
+
 problem 12: need to fix letters guessed. it is only recording the current guess, not any previous guesses. 
+
+    solution 1: store guesses into string/array then push to p.letters-guessed. was already doing this, but was pushing userGuess to .innetHTML instead of lettersGuessed string. -solved!
+
+problem 12.1: there is no spacing in p.letters-guessed.
+
+    solution 1: instead of string, perhaps array? solved, but need spacing in between comma and letter. solved with: " " + userGuess. 
+
+problem 12.1.1: letters guess is repeating the letter, should only be one instance. 
+
+
 
 problem 13: need to fix wins. currently not logging wins
 
+    solution 1: string or array and counter?
+
 problem 14: need to fix theme. currently static, need to get it to change based on computerChoice. Hangman title should change to match browser color scheme (also need to change wordList to browsers) ie yellow/red/blue/green if computerChoice chrome
 
+    solution 1: ??? google how to change css with javascript?
 
+problem 15: need some sort of congratulatory message upon guessing word; tied to problem 13.
+
+    solution 1: if/else that checks if gameboard is letters or underscores?
+
+problem 16: need to fix guesses remaining, should not countdown if letter has already been guessed; tied to problem 12. 
+
+    solution 1: store letters already guessed in array
