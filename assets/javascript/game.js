@@ -1,6 +1,7 @@
 // window.onload=function () {
     // ^ fix for "Cannot read property 'addEventListener' of null"; "document.querySelector(".start-button").addEventListener("click", function..." executing before DOM fully loads
 
+    // var winCounter = ""; needs to be int, "" turns it to str
     var winCounter = 0;
 
     document.querySelector(".bing-heading").style.visibility = "hidden";
@@ -13,9 +14,6 @@
     
         // variables
 
-        // var winCounter = ""; needs to be int, "" turns it to str
-        
-    
         // guesses-remaining div
         var guessesRemaining = 15; //had as str needs to be int
         document.querySelector(".guesses-remaining").innerHTML = guessesRemaining;
@@ -50,6 +48,7 @@
             // takes var gameboard and pushes to p.gameboard
             
         }
+        
         document.querySelector(".gameboard").innerHTML = gameboard.join('');
         // console.log("gameboard:", gameboard);
         // console.log("gameboard[0]:", gameboard[0]);
@@ -90,7 +89,6 @@
 
                 document.querySelector(".header").style.display = "inline";
 
-
             } else if (computerChoice === "bing") {
 
                 document.body.style.backgroundImage = "url('../Hangman-Game/assets/images/bing.jpg')";
@@ -115,10 +113,6 @@
                 document.querySelector(".duckduckgo-headingSub").style.display = "flex";
 
                 document.querySelector(".header").style.display = "inline";
-
-
-
-                
 
             } else if (computerChoice === "duckduckgo") {
 

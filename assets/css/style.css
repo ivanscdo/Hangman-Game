@@ -8,7 +8,8 @@ h2 {
 }
 
 h2.bing-heading {
-    margin-left: 110px;
+    font-family: sans-serif;
+    margin-left: 100px;
     letter-spacing: 3px
 }
 
