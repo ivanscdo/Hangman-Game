@@ -7,6 +7,11 @@ h2 {
     font-family: serif;
 }
 
+h2.bing-heading {
+    margin-left: 110px;
+    letter-spacing: 3px
+}
+
 
 .title {
     font-family: sans-serif;
@@ -14,7 +19,14 @@ h2 {
 }
 
 .form-control {
-    width: 200%;
-    height: auto;
     margin-left: 170px;
+}
+
+.duckduckgo-img {
+    height: 20%;
+    width: 20%;
+}
+
+.duckduckSearch {
+    margin-left: 0px;
 }

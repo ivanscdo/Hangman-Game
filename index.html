@@ -7,13 +7,13 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
         <link rel="stylesheet" href="assets/css/style.css">
-        <script src="assets/javascript/game.js"></script>
+        <!-- <script src="assets/javascript/game.js"></script> -->
 
         <title>Hangman - Game</title>
 
     </head>
     <body>
-        <header class="container">
+        <header class="container header">
             <h1 class="row justify-content-center">
                 <div class="col-1 title chrome-b">H</div>
                 <div class="col-1 title chrome-r">A</div>
@@ -27,24 +27,48 @@
         </header>
 
         <main class="container ">
-            <div class="row justify-content-left">
-                    <form>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1"><span class="glyphicon glyphicon-search"></span></label>
-                              <input class="form-control" id="exampleInputPassword1" placeholder="">
-                            </div>
-                          </form>
+            <div class="row duckduckgo-headingMain">
+                <div class="col">
+                    <!-- img -->
+                    <div class="row justify-content-center"> 
+                        <img class="duckduckgo-img" src="../Hangman-Game/assets/images/duckduckgo.png" />
+                    </div>
+                    <!-- heading -->
+                    <div class="row justify-content-center">
+                        <h2 class="duckduckgo-heading">Hangman</h2>
+                    </div>
+                    <!-- search bar -->
+                    <div class="row justify-content-center ">
+                        <form>
+                                <div class="form-group">
+                                    <!-- <label><span class="glyphicon glyphicon-search"></span></label> -->
+                                    <input class="form-control duckduckSearch" placeholder="">
+                                </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-4">
+
+            <div class="row duckduckgo-headingSub">
+                    <div class="col-1">
+                        <h2 class="bing-heading">Hangman</h2>
+                    </div>
+                    <div class="col-6">
+                        <form>
+                            <div class="form-group">
+                                <!-- <label><span class="glyphicon glyphicon-search"></span></label> -->
+                                <input class="form-control" placeholder="">
+                            </div>
+                        </form>
+                    </div>
+            </div>
                     <div class="row justify-content-center">
                         <button class="start-button">Let's Play!</button>
                     </div>
-                    <div class="row">
-                        <div class="col ">
-                            <p class="start-msg">
-                            </p>
+                    <div class="row justify-content-center">
+                        <div class="col-4"></div>
+                        <div class="col">
+                            <p class="start-msg"></p>
                             <p>Wins:</p>
                             <p class="game-winner"></p>
                             <p>Current Word:</p>
@@ -54,12 +78,11 @@
                             <p>Letters Already Guessed:</p>
                             <p class="letters-guessed"></p>
                         </div>
+                        <div class="col-3"></div>
                     </div>
-
-                </div>
                 <div class="col"></div>
-            </div>
         </main>
-        
+        <!-- first load all elements, then.. script at the top, addevent listerner, not on page yet, needs to be at bottom, loads page then loads script, SCRIPTS AT BOTTOM -->
+        <script src="assets/javascript/game.js"></script> 
     </body>
 </html>

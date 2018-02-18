@@ -1,15 +1,23 @@
-window.onload=function () {
+// window.onload=function () {
     // ^ fix for "Cannot read property 'addEventListener' of null"; "document.querySelector(".start-button").addEventListener("click", function..." executing before DOM fully loads
+
+    var winCounter = 0;
+
+    document.querySelector(".bing-heading").style.visibility = "hidden";
+    document.querySelector(".duckduckgo-headingMain").style.visibility = "hidden";
+    document.querySelector(".duckduckgo-headingSub").style.visibility = "visible";
+    document.querySelector(".duckduckgo-headingMain").style.display = "none";
     
     // starts game
     document.querySelector(".start-button").addEventListener("click", function(){ 
     
         // variables
 
-        var winCounter = "";
+        // var winCounter = ""; needs to be int, "" turns it to str
+        
     
         // guesses-remaining div
-        var guessesRemaining = "15";
+        var guessesRemaining = 15; //had as str needs to be int
         document.querySelector(".guesses-remaining").innerHTML = guessesRemaining;
     
         // letters-guessed div
@@ -40,8 +48,9 @@ window.onload=function () {
             // adds underscores to var gameboard based on word length
             gameboard.push(" _ ");
             // takes var gameboard and pushes to p.gameboard
-            document.querySelector(".gameboard").innerHTML = gameboard.join('');
+            
         }
+        document.querySelector(".gameboard").innerHTML = gameboard.join('');
         // console.log("gameboard:", gameboard);
         // console.log("gameboard[0]:", gameboard[0]);
         // console.log("computerChoice[0]:", computerChoice[0]);
@@ -63,6 +72,24 @@ window.onload=function () {
                 document.querySelector(".chrome-b2").style.color = "blue";
                 document.querySelector(".chrome-r3").style.color = "red";
 
+                document.querySelector(".bing-heading").style.visibility = "hidden";
+
+                document.querySelector(".chrome-b").style.visibility = "visible";
+                document.querySelector(".chrome-r").style.visibility = "visible";
+                document.querySelector(".chrome-y").style.visibility = "visible";
+                document.querySelector(".chrome-g").style.visibility = "visible";
+                document.querySelector(".chrome-g2").style.visibility = "visible";
+                document.querySelector(".chrome-b2").style.visibility = "visible";
+                document.querySelector(".chrome-r3").style.visibility = "visible";
+
+                document.querySelector(".duckduckgo-headingMain").style.visibility = "hidden";
+                document.querySelector(".duckduckgo-headingSub").style.visibility = "visible";
+
+                document.querySelector(".duckduckgo-headingMain").style.display = "none";
+                document.querySelector(".duckduckgo-headingSub").style.display = "flex";
+
+                document.querySelector(".header").style.display = "inline";
+
 
             } else if (computerChoice === "bing") {
 
@@ -71,29 +98,53 @@ window.onload=function () {
 
                 document.querySelector(".title").style.color = "white";
 
-                document.querySelector(".chrome-b").style.color = "white";
-                document.querySelector(".chrome-r").style.color = "white";
-                document.querySelector(".chrome-y").style.color = "white";
-                document.querySelector(".chrome-g").style.color = "white";
-                document.querySelector(".chrome-g2").style.color = "white";
-                document.querySelector(".chrome-b2").style.color = "white";
-                document.querySelector(".chrome-r3").style.color = "white";
+                document.querySelector(".bing-heading").style.visibility = "visible";
+
+                document.querySelector(".chrome-b").style.visibility = "hidden";
+                document.querySelector(".chrome-r").style.visibility = "hidden";
+                document.querySelector(".chrome-y").style.visibility = "hidden";
+                document.querySelector(".chrome-g").style.visibility = "hidden";
+                document.querySelector(".chrome-g2").style.visibility = "hidden";
+                document.querySelector(".chrome-b2").style.visibility = "hidden";
+                document.querySelector(".chrome-r3").style.visibility = "hidden";
+
+                document.querySelector(".duckduckgo-headingMain").style.visibility = "hidden";
+                document.querySelector(".duckduckgo-headingSub").style.visibility = "visible";
+
+                document.querySelector(".duckduckgo-headingMain").style.display = "none";
+                document.querySelector(".duckduckgo-headingSub").style.display = "flex";
+
+                document.querySelector(".header").style.display = "inline";
+
+
 
                 
 
             } else if (computerChoice === "duckduckgo") {
 
-                document.body.style.backgroundImage = "url('../Hangman-Game/assets/images/duckduckgo.png')";
+                document.body.style.backgroundImage = "url('')";
 
                 document.body.style.color = "black";
 
-                document.querySelector(".chrome-b").style.color = "#4c4c4c";
-                document.querySelector(".chrome-r").style.color = "#4c4c4c";
-                document.querySelector(".chrome-y").style.color = "#4c4c4c";
-                document.querySelector(".chrome-g").style.color = "#4c4c4c";
-                document.querySelector(".chrome-g2").style.color = "#4c4c4c";
-                document.querySelector(".chrome-b2").style.color = "#4c4c4c";
-                document.querySelector(".chrome-r3").style.color = "#4c4c4c";
+                document.querySelector(".bing-heading").style.visibility = "hidden";
+
+                document.querySelector(".chrome-b").style.visibility = "hidden";
+                document.querySelector(".chrome-r").style.visibility = "hidden";
+                document.querySelector(".chrome-y").style.visibility = "hidden";
+                document.querySelector(".chrome-g").style.visibility = "hidden";
+                document.querySelector(".chrome-g2").style.visibility = "hidden";
+                document.querySelector(".chrome-b2").style.visibility = "hidden";
+                document.querySelector(".chrome-r3").style.visibility = "hidden";
+
+                document.querySelector(".duckduckgo-headingMain").style.visibility = "visible";
+                // document.querySelector(".duckduckgo-headingSub").style.visibility = "hidden";
+
+                document.querySelector(".duckduckgo-headingMain").style.display = "inline";
+                document.querySelector(".duckduckgo-headingSub").style.display = "none";
+
+                document.querySelector(".header").style.display = "none";
+
+                document.querySelector(".duckduckSearch").style.alignContent = "center";
 
          
                 
@@ -108,12 +159,13 @@ window.onload=function () {
     
             // key presses stored into userGuess
             var userGuess = event.key;
+
     
     
             // all userGuesses stored in array
             // masterGuessList.push(userGuess);
             // console.log("masterGuessList:", masterGuessList);
-            // console.log("userGuess:", userGuess);
+            console.log("userGuess:", userGuess);
             
     
             // .split - splits randomly chosen word (computerChoice) into letters, then inserts into array 
@@ -164,9 +216,9 @@ window.onload=function () {
                     
              
 
-                console.log(userGuess);
-                console.log(gameboard);
-                console.log(computerChoice);
+                // console.log(userGuess);
+                console.log("gameboard after wins:", gameboard);
+                // console.log(computerChoice);
                 
     
     
@@ -242,5 +294,5 @@ window.onload=function () {
     });
     
     // end of: window.onload=function () {
-    }
+    // }
     
