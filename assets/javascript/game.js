@@ -4,6 +4,17 @@
     // var winCounter = ""; needs to be int, "" turns it to str
     var winCounter = 0;
 
+    var uniqueGuesses = [];
+
+    var lettersGuessed = [];
+
+    var uniqueGuessesInnerHTML = "";
+
+    
+
+    
+
+
     document.querySelector(".bing-heading").style.visibility = "hidden";
     document.querySelector(".duckduckgo-headingMain").style.visibility = "hidden";
     document.querySelector(".duckduckgo-headingSub").style.visibility = "visible";
@@ -19,13 +30,16 @@
         document.querySelector(".guesses-remaining").innerHTML = guessesRemaining;
     
         // letters-guessed div
-        var lettersGuessed = [];
+        lettersGuessed = [];
         document.querySelector(".letters-guessed").innerHTML = lettersGuessed;
     
         // list of words for computer to pick
         var wordList = ["google", "bing", "duckduckgo"];
-   
+
+
         var computerChoice = "";
+   
+        
     
         // computer picks random word from wordList; stored into computerChoice(str) 
         computerChoice = wordList[Math.floor(Math.random() * wordList.length)];
@@ -46,15 +60,16 @@
             // adds underscores to var gameboard based on word length
             gameboard.push(" _ ");
             // takes var gameboard and pushes to p.gameboard
+            console.log("gameboard initial forloop:", gameboard);
             
         }
-        
+
         document.querySelector(".gameboard").innerHTML = gameboard.join('');
         // console.log("gameboard:", gameboard);
         // console.log("gameboard[0]:", gameboard[0]);
         // console.log("computerChoice[0]:", computerChoice[0]);
 
-        function headerChanger () {
+        function themeChanger () {
             if (computerChoice === "google") {
 
                 document.body.style.backgroundColor = "white";
@@ -145,7 +160,7 @@
             } 
         }
 
-        headerChanger();
+        themeChanger();
         
 
         // listens for key presses
@@ -159,13 +174,16 @@
             // all userGuesses stored in array
             // masterGuessList.push(userGuess);
             // console.log("masterGuessList:", masterGuessList);
-            console.log("userGuess:", userGuess);
+            // console.log("userGuess:", userGuess);
             
     
             // .split - splits randomly chosen word (computerChoice) into letters, then inserts into array 
             // .indexOf -  checks if keypresses (userGuess) match letter in array
             // === -1 means there is no match, !=== means there is a match
             if (computerChoice.split("").indexOf(userGuess) !== -1 ) {
+
+                console.log("computerChoice:", computerChoice);
+                console.log("userGuess:", userGuess);
                 
                 
                 // if userGuess matches a letter in computerChoice, find the index of that letter in computerChoice and store into gameboardIndex(int)
@@ -183,6 +201,7 @@
                             // console.log("gameboard[i]:", gameboard[i]);
                             // console.log("gameboard:", gameboard);
                         } 
+                        console.log("gameboard inside builder:", gameboard)
                     }
     
                     // takes rebuilt gameboard and stores into p.gameboard div
@@ -198,7 +217,7 @@
     
                 
                     // game wins
-                    if (gameboard.join('') === computerChoice ) {
+                    function gameWinner () {
                         startMessage.innerHTML = "You Win!";
                         // document.querySelector(".start-button").innerHTML = "Play Again!";
                         // document.querySelector(".start-button").addEventListener("click", function(){
@@ -206,12 +225,32 @@
                         // });
                         winCounter += 1;                        
                         document.querySelector(".game-winner").innerHTML = winCounter;
+                        computerChoice = "";
+                        // gameboard.join() = [];
+                        // winCounter = 0;
+                        lettersGuessed = [];
+                        uniqueGuesses = [];
+                        // userGuess = "";
+                        // guessesRemaining = 15;
+                        gameboard = [];
+                        // wordList = [];
+                        // gameboard = gameboard.splice();
+                        // gameboard.splice(0,gameboard.length);
+                        console.log("gameboard gameWinner:", gameboard);
+
+        
+
+
+                    }
+
+                    if (gameboard.join('') === computerChoice ) {
+                        gameWinner();
                     }
                     
              
 
                 // console.log(userGuess);
-                console.log("gameboard after wins:", gameboard);
+                // console.log("gameboard after wins:", gameboard);
                 // console.log(computerChoice);
                 
     
@@ -223,59 +262,69 @@
     
             // end of: if (computerChoice.split("").indexOf(userGuess) !== -1 ) {
             } else {
-                
-                // all userGuesses that don't match computerChoice pushed into letterGuessed array
-                lettersGuessed.push(userGuess);
-                // create function to check for repeating guesses
 
-                // empty array used for func noRepeatingGuesses
-                var uniqueGuesses = [];
-                function noRepeatingGuesses(arr) {
-                    // create empty array where unique guesses will be stored
+                if (computerChoice.split("").indexOf(userGuess) === -1 ) {
+                    // lettersGuessed = [];
+                    // all userGuesses that don't match computerChoice pushed into letterGuessed array
+                    lettersGuessed.push(userGuess);
+                    // create function to check for repeating guesses
+
+                    // empty array used for func noRepeatingGuesses
                     uniqueGuesses = [];
-                    // for loop iterates over the length of all userGuesses
-                    for (var i = 0; i < lettersGuessed.length; i++) {
-                        // check each index in the new array to see if any userGuess is already in there
-                        if (uniqueGuesses.indexOf(arr[i]) === -1) {
-                            // if it's already in there do nothing, if not (=== -1) then add userGuess
-                            uniqueGuesses.push(arr[i]);
+                    function noRepeatingGuesses(arr) {
+                        // create empty array where unique guesses will be stored
+                        uniqueGuesses = [];
+                        // for loop iterates over the length of all userGuesses
+                        for (var i = 0; i < lettersGuessed.length; i++) {
+                            // check each index in the new array to see if any userGuess is already in there
+                            if (uniqueGuesses.indexOf(arr[i]) === -1) {
+                                // if it's already in there do nothing, if not (=== -1) then add userGuess
+                                uniqueGuesses.push(arr[i]);
+                            }
                         }
+                        // return new array of uniqueGuesses (non repeating)
+                        return uniqueGuesses;
+                        
                     }
-                    // return new array of uniqueGuesses (non repeating)
-                    return uniqueGuesses;
+                    noRepeatingGuesses(lettersGuessed);
+                    uniqueGuessesInnerHTML = noRepeatingGuesses(lettersGuessed);
+                    // add new array to p.letters-guessed
+                    document.querySelector(".letters-guessed").innerHTML = uniqueGuessesInnerHTML;
+                    console.log("lettersGuessed:", lettersGuessed);
+                    console.log("uniqueGuesses:", noRepeatingGuesses(lettersGuessed));
+                    // console.log("userGuess:", userGuess);
                     
-                }
-                // add new array to p.letters-guessed
-                document.querySelector(".letters-guessed").innerHTML = noRepeatingGuesses(lettersGuessed);
-                // console.log("lettersGuessed:", lettersGuessed);
-                // console.log("uniqueGuesses:", noRepeatingGuesses(lettersGuessed));
-                // console.log("userGuess:", userGuess);
-                
-    
-                guessesRemaining -= 1;
-                document.querySelector(".guesses-remaining").innerHTML = guessesRemaining;
-    
-    
-    
-                
-                
-                //// create new function for Guesses Remaining div, if userGuess already in letters guessed (noRepeatingGuesses(lettersGuessed)), it will not countdown
-                // function guessesRemainingFix () {
-                //     // for loop iterates over length of unique letters guessed ( noRepeatingGuesses(lettersGuessed); )
-                //     for (var i = 0; i < masterGuessList.length; i++ ) {
-                //         if ( userGuess !== masterGuessList[i]) {
-                //             guessesRemaining -= 1;
-                //             document.querySelector(".guesses-remaining").innerHTML = guessesRemaining;
-                //             console.log("[i]", [i]);
-                //             console.log("masterGuessList[i]", masterGuessList[i]);
-                //         } 
-                //     }
-                // }
-                // guessesRemainingFix();
-                // console.log("guessesRemaining:", guessesRemaining);
+        
+                    guessesRemaining -= 1;
+                    document.querySelector(".guesses-remaining").innerHTML = guessesRemaining;
+        
+        
+        
+                    
+                    
+                    //// create new function for Guesses Remaining div, if userGuess already in letters guessed (noRepeatingGuesses(lettersGuessed)), it will not countdown
+                    // function guessesRemainingFix () {
+                    //     // for loop iterates over length of unique letters guessed ( noRepeatingGuesses(lettersGuessed); )
+                    //     for (var i = 0; i < masterGuessList.length; i++ ) {
+                    //         if ( userGuess !== masterGuessList[i]) {
+                    //             guessesRemaining -= 1;
+                    //             document.querySelector(".guesses-remaining").innerHTML = guessesRemaining;
+                    //             console.log("[i]", [i]);
+                    //             console.log("masterGuessList[i]", masterGuessList[i]);
+                    //         } 
+                    //     }
+                    // }
+                    // guessesRemainingFix();
+                    // console.log("guessesRemaining:", guessesRemaining);
 
-                console.log(userGuess);
-                console.log(gameboard);
+                    console.log("userGuess:", userGuess);
+                    console.log("gameboard:", gameboard);
+
+
+                // end of: if (computerChoice.split("").indexOf(userGuess) === -1 ) {
+                }
+                
+               
                
     
             // end of: else {
@@ -283,6 +332,8 @@
     
         // end of: document.addEventListener("keyup", function( event ) {
         });
+
+        console.log("---end---");
     
     // end of: document.querySelector(".start-button").addEventListener("click", function(){
     });
